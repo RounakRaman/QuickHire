@@ -15,7 +15,7 @@ def main():
     
     
     # Input for LinkedIn URL
-    linkedin_url = st.text_input("Enter the LinkedIn Profile URL:", placeholder="https://www.linkedin.com/in/example/")
+    linkedin_url = st.text_input("Enter your LinkedIn Profile URL:", placeholder="https://www.linkedin.com/in/example/")
     roles=st.text_input("Enter the roles you are looking for:",placeholder="Example like Data Analyst OR Business Analyst OR Financial Analyst")
 
     # Button to fetch data
