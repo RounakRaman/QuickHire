@@ -10,7 +10,7 @@ API_KEY = os.getenv("API")
 
 # Streamlit app
 def main():
-    st.image("https://ibb.co/sK9t45d",width=150)
+    st.image("https://i.ibb.co/K2xmgNp/Beyond-Tech-Logo-page-0001.jpg",width=150)
     st.title("QuickHire: Redefining Off-Campus Hiring")
     
     
