@@ -59,20 +59,27 @@ if submit:
                     st.write(f"[Job Link]({job_link})")
 
                     # Extract posting time
+                    # Extract posting time
                     insights = response.get('insightsResolutionResults', [])
-                    if insights:
-                        footer = insights[0].get('jobPostingFooterInsight', {}).get('footerItems', [])
-                        if footer and footer[0].get('type') == 'LISTED_DATE':
-                            timestamp = footer[0].get('timeAt')
-                            if timestamp:
-                                posted_date = datetime.datetime.utcfromtimestamp(timestamp / 1000).strftime('%Y-%m-%d')
-                                st.write(f"**Posted Date:** {posted_date}")
+                    if insights and len(insights) > 0 and insights[0]:
+                        footer_insight = insights[0].get('jobPostingFooterInsight', {})
+                        footer_items = footer_insight.get('footerItems', [])
+                        if footer_items and len(footer_items) > 0:
+                            first_footer = footer_items[0]
+                            if first_footer.get('type') == 'LISTED_DATE':
+                                timestamp = first_footer.get('timeAt')
+                                if timestamp:
+                                    posted_date = datetime.datetime.utcfromtimestamp(timestamp / 1000).strftime('%Y-%m-%d')
+                                    st.write(f"**Posted Date:** {posted_date}")
+                                else:
+                                    st.write("**Posted Date:** Not available.")
                             else:
                                 st.write("**Posted Date:** Not available.")
                         else:
                             st.write("**Posted Date:** Not available.")
                     else:
                         st.write("**Posted Date:** Not available.")
+
                     st.write("---")
             else:
                 st.write("No job postings found.")
